@@ -1,0 +1,32 @@
+D:\Desktop\Projects\Image Transformations\ImageTransformer\bin\Debug\ImageTransformer.exe.config
+D:\Desktop\Projects\Image Transformations\ImageTransformer\bin\Debug\ImageTransformer.exe
+D:\Desktop\Projects\Image Transformations\ImageTransformer\bin\Debug\ImageTransformer.pdb
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.Form1.resources
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.Properties.Resources.resources
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.csproj.GenerateResource.Cache
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.csproj.CoreCompileInputs.cache
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.exe
+D:\Desktop\Projects\Image Transformations\ImageTransformer\obj\Debug\ImageTransformer.pdb
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\bin\Debug\ImageTransformer.exe.config
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.exe
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.pdb
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\bin\Debug\ImageTransformer.exe
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\bin\Debug\ImageTransformer.pdb
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.Form1.resources
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.Properties.Resources.resources
+C:\Users\mitch_000\Desktop\ImageTransformer-20170823T092143Z-001\ImageTransformer\obj\Debug\ImageTransformer.csproj.GenerateResource.Cache
+D:\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.exe.config
+D:\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.exe
+D:\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.pdb
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.Form1.resources
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.Properties.Resources.resources
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.csproj.GenerateResource.Cache
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.csproj.CoreCompileInputs.cache
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.exe
+D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.pdb
+C:\Users\mitch\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.exe.config
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.exe
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.pdb

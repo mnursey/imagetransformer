@@ -82,7 +82,7 @@ namespace ImageTransformer
             Stream myStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.InitialDirectory = @"D:\Desktop\Projects\ImageTransformer\_Test Images";
             openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF; *.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
             openFileDialog.RestoreDirectory = true;
 
@@ -111,7 +111,7 @@ namespace ImageTransformer
                 return;
             }
             byte[] rgb = BitmapToRGB(image);
-            rgb = Transformations.RGBtoBW(rgb);
+            rgb = Transformations.RGBtoBW(rgb, image.Width);
             image = RGBtoBitmap(rgb, image);
             UpdatePictureFrame();
         }
