@@ -111,7 +111,15 @@ namespace ImageTransformer
                 return;
             }
             byte[] rgb = BitmapToRGB(image);
+
+            if (image.Width % 2 != 0)//ODD Sized images are shifted a byte after each row
+                rgb = Transformations.RemoveShiftByte(rgb, image.Width);
+
             rgb = Transformations.RGBtoBW(rgb, image.Width);
+
+            if (image.Width % 2 != 0)
+                rgb = Transformations.AddShiftByte(rgb, image.Width);
+
             image = RGBtoBitmap(rgb, image);
             UpdatePictureFrame();
         }
@@ -140,7 +148,14 @@ namespace ImageTransformer
                 return;
             }
             byte[] rgb = BitmapToRGB(image);
+            if (image.Width % 2 != 0)//ODD Sized images are shifted a byte after each row
+                rgb = Transformations.RemoveShiftByte(rgb, image.Width);
+
             rgb = Transformations.GaussianBlur(rgb, image.Width, 1);
+
+            if (image.Width % 2 != 0)
+                rgb = Transformations.AddShiftByte(rgb, image.Width);
+
             image = RGBtoBitmap(rgb, image);
             UpdatePictureFrame();
         }

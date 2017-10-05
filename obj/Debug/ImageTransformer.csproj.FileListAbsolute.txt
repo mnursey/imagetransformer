@@ -30,3 +30,9 @@ D:\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.pdb
 C:\Users\mitch\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.exe.config
 C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.exe
 C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.pdb
+C:\Users\mitch\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.exe
+C:\Users\mitch\Desktop\Projects\ImageTransformer\bin\Debug\ImageTransformer.pdb
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.csprojResolveAssemblyReference.cache
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.Form1.resources
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.Properties.Resources.resources
+C:\Users\mitch\Desktop\Projects\ImageTransformer\obj\Debug\ImageTransformer.csproj.GenerateResource.Cache

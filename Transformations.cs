@@ -95,33 +95,39 @@ namespace ImageTransformer
         public static byte[] ApplyFilter(byte[] rgb, Kernel k, int width)
         {
             int pixelWidth = 3;
-            byte[] frgb = new byte[rgb.Count()];
+            int height = rgb.Length / width / pixelWidth;
+            byte[] frgb = new byte[rgb.Length];
 
-            int testCounter = 0;
-            int tick = 0;
+            for (int x = 0; x < rgb.Length; x = x + pixelWidth)
+            {    
+                float bSum = 0.0f;
+                float gSum = 0.0f;
+                float rSum = 0.0f;
 
-            for (int c = 0; c < frgb.Count(); c = c + 3)
-            {
-                if (tick == width)
+                float kSum = 0.0f;
+                for (int u = 0; u < k.width; u++)
                 {
-                    testCounter++;
-
-                    tick = 0;
-                }
-
-                tick++;
-
-                if((testCounter / 2) * 2 == testCounter)
-                {
-                    if(c < frgb.Length)
+                    for(int v = 0; v < k.height; v++)
                     {
-                        frgb[c] = 255;
-                        int b = GetPixelRelative(width, frgb.Length, pixelWidth, -61, 5, c);
-                       // MessageBox.Show("B: " + b);
-                        if (0 <= b && b+ 1 < frgb.Length)
-                            frgb[b + 1] = 255;
+                        int p = GetPixelRelative(width, rgb.Length, pixelWidth, v - k.height/2, u - k.width/2, x);
+                        //MessageBox.Show("" + x);
+                        if(-1 < p)
+                        {
+                            bSum += k.array[u, v] * rgb[p];
+                            gSum += k.array[u, v] * rgb[p + 1];
+                            rSum += k.array[u, v] * rgb[p + 2];
+                            kSum += k.array[u, v];
+                        }
                     }
                 }
+                //MessageBox.Show("Sum: " + sum);                
+                byte bResult = (byte)(bSum / (kSum));
+                byte gResult = (byte)(gSum / (kSum));
+                byte rResult = (byte)(rSum / (kSum));
+
+                frgb[x] = bResult;
+                frgb[x + 1] = gResult;
+                frgb[x + 2] = rResult;
             }
             return frgb;
         }
@@ -147,46 +153,49 @@ namespace ImageTransformer
                 if(i + 2 <= length - 1)
                     bw[i + 2] = (byte)value;
             }
-
             return bw;
         }
 
         public static byte[] GaussianBlur(byte[] rgb, int width, int tao)
         {
-            if(width % 2 != 0)//ODD Sized images are shifted a byte after each row
-                rgb = RemoveShiftByte(rgb, width);
-
-             byte[] bw = RGBtoBW(rgb, width);
-             Kernel xKernal = new Kernel();
-             Kernel yKernal = new Kernel();
-
-            byte[] xGB = ApplyFilter(bw, xKernal, width);
-            /*byte[] yGB = ApplyFilter(bw, yKernal, width);
-
-            byte[] GB = new byte[bw.Length];
-
-            for(int i = 0; i < rgb.Length; i++)
-            {
-                GB[i] = (byte)Math.Round(Math.Sqrt((double)(xGB[i] * xGB[i] + yGB[i] * yGB[i])));
-            }*/
-
-            //return GB;
-
-            if (width % 2 != 0)
-                xGB = AddShiftByte(xGB, width);
-
-            return xGB;
+            Kernel kernal = new Kernel();
+            kernal.GenerateArray(new int[] {1,2,1,2,4,2,1,2,1}, 3);
+            return ApplyFilter(rgb, kernal, width);
         }
     }
 
     public class Kernel
     {
-        int sizeX, sizeY;
-        int[,] array;
-
-        public void GenerateArray()
+        public int width, height;
+        public int[,] array;
+        public void GenerateArray(int[] kernal, int width_)
         {
+            width = width_;
+            height = kernal.Length / width;
+            array = new int[width, height];
 
+            int x = 0;
+            int y = 0;
+            for(int p = 0; p < width * height; p++)
+            {
+                array[x, y] = kernal[p];
+
+                x++;
+                if(x == width)
+                {
+                    y++;
+                    x = 0;
+                }
+            }
+
+
+            /*for (int a = 0; a < width; a++)
+            {
+                for (int b = 0; b < height; b++)
+                {
+                    MessageBox.Show(a + " " + b + " : " + array[a,b]);
+                }
+            } Testing the array*/ 
         }
     }
 }
