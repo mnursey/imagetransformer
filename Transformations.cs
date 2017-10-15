@@ -100,11 +100,11 @@ namespace ImageTransformer
 
             for (int x = 0; x < rgb.Length; x = x + pixelWidth)
             {    
-                float bSum = 0.0f;
-                float gSum = 0.0f;
-                float rSum = 0.0f;
+                double bSum = 0.0f;
+                double gSum = 0.0f;
+                double rSum = 0.0f;
 
-                float kSum = 0.0f;
+                double kSum = 0.0f;
                 for (int u = 0; u < k.width; u++)
                 {
                     for(int v = 0; v < k.height; v++)
@@ -156,23 +156,60 @@ namespace ImageTransformer
             return bw;
         }
 
-        public static byte[] GaussianBlur(byte[] rgb, int width, int tao)
+        public static byte[] GaussianBlur(byte[] rgb, int width, int kernalSize,double tao)
         {
             Kernel kernal = new Kernel();
-            kernal.GenerateArray(new int[] {1,2,1,2,4,2,1,2,1}, 3);
+            kernal.GenerateArray(GetGuassianTerms(kernalSize * kernalSize, kernalSize, tao), kernalSize);
             return ApplyFilter(rgb, kernal, width);
+        }
+
+        public static double[] GetGuassianTerms(int kernalSize, int width, double tao)
+        {
+            double[] terms = new double[kernalSize];
+            double sum = 0.0f;
+            int height = kernalSize / width;
+            int i = 0;
+            for(int x = 0; x < width; x++)
+            {
+                for(int y = 0; y < height; y++)
+                {
+                    terms[i] = GetGuassianValue(x - width / 2, y - height / 2, tao);
+                    sum += terms[i];
+                    i++;
+                }
+            }
+
+            for(int y = 0; y < kernalSize; y++)
+            {
+                terms[y] = terms[y] * (1 / sum);
+            }
+
+            /*foreach(double d in terms)
+            {
+                MessageBox.Show(d + "");
+            }*/
+
+            return terms;
+        }
+
+        public static double GetGuassianValue(int x, int y, double tao)
+        {
+            double r = Math.Pow(2 * Math.PI * Math.Pow(tao, 2),-1);
+            double p = -(x * x + y * y) / (2 * tao * tao);
+            r += Math.Pow(Math.E, p);
+            return r;
         }
     }
 
     public class Kernel
     {
         public int width, height;
-        public int[,] array;
-        public void GenerateArray(int[] kernal, int width_)
+        public double[,] array;
+        public void GenerateArray(double[] kernal, int width_)
         {
             width = width_;
             height = kernal.Length / width;
-            array = new int[width, height];
+            array = new double[width, height];
 
             int x = 0;
             int y = 0;

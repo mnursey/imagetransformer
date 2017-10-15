@@ -151,7 +151,9 @@ namespace ImageTransformer
             if (image.Width % 2 != 0)//ODD Sized images are shifted a byte after each row
                 rgb = Transformations.RemoveShiftByte(rgb, image.Width);
 
-            rgb = Transformations.GaussianBlur(rgb, image.Width, 1);
+            NumericUpDown n = this.Controls.Find("gbtSlider", true)[0] as NumericUpDown;
+            NumericUpDown k = this.Controls.Find("gbkSlider", true)[0] as NumericUpDown;
+            rgb = Transformations.GaussianBlur(rgb, image.Width, (int)k.Value,(double)n.Value);
 
             if (image.Width % 2 != 0)
                 rgb = Transformations.AddShiftByte(rgb, image.Width);
