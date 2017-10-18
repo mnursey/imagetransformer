@@ -161,9 +161,9 @@ namespace ImageTransformer
                     }
                 }
                 //MessageBox.Show("Sum: " + sum);                
-                byte bResult = (byte)(bSum / (kSum));
-                byte gResult = (byte)(gSum / (kSum));
-                byte rResult = (byte)(rSum / (kSum));
+                double bResult = (bSum / (kSum));
+                double gResult = (gSum / (kSum));
+                double rResult = (rSum / (kSum));
 
                 frgb[x] = bResult;
                 frgb[x + 1] = gResult;
@@ -196,25 +196,24 @@ namespace ImageTransformer
             return bw;
         }
 
+        public static byte[] SobelEdgeDetector(byte[] rgb, int width)
+        {
+            rgb = RGBtoBW(rgb, width);
+            double[] rgby = ApplyFilterD(rgb, new Kernel(new double[] { 1, 2, 1, 0, 0, 0, -1, -2, -1 }, 3), width);
+            double[] rgbx = ApplyFilterD(rgb, new Kernel(new double[] { 1, 0, -1, 2, 0, -2, 1, 0, -1 }, 3), width);
+            for (int i = 0; i < rgb.Length; i++)
+            {
+                double d = (Math.Sqrt(Math.Pow(rgby[i], 2) + Math.Pow(rgbx[i], 2)));
+                rgb[i] = (byte)d;
+            }
+            return rgb;
+        }
+
         public static byte[] GaussianBlur(byte[] rgb, int width, int kernalSize, double tao)
         {
             Kernel kernal = new Kernel();
             kernal.GenerateArray(GetGuassianTerms(kernalSize * kernalSize, kernalSize, tao), kernalSize);
             return ApplyFilter(rgb, kernal, width);
-        }
-
-        public static byte[] SobelEdgeDetector(byte[] rgb, int width)
-        {
-            rgb = RGBtoBW(rgb, width);
-            double[] rgby = ApplyFilterD(rgb, new Kernel(new double[] { 1, 2, 1, 0, 0, 0, -1, -2, -1 }, 3), width);
-            double[] rgbx = ApplyFilterD(rgb, new Kernel(new double[] { -1, 0, 1, -2, 0, 2, -1, 0, 2 }, 3), width);
-            for(int i = 0; i < rgb.Length; i++)
-            {
-                //rgb[i] = (byte)(rgby[i]);
-                //rgb[i] =(byte) (Math.Sqrt(Math.Pow(rgby[i],2) + Math.Pow(rgbx[i],2)));
-            }
-
-            return rgb;
         }
 
         public static double[] GetGuassianTerms(int kernalSize, int width, double tao)
