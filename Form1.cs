@@ -161,5 +161,25 @@ namespace ImageTransformer
             image = RGBtoBitmap(rgb, image);
             UpdatePictureFrame();
         }
+
+        private void seButton_Click(object sender, EventArgs e)
+        {
+            if (image == null)
+            {
+                MessageBox.Show("No Image");
+                return;
+            }
+            byte[] rgb = BitmapToRGB(image);
+            if (image.Width % 2 != 0)//ODD Sized images are shifted a byte after each row
+                rgb = Transformations.RemoveShiftByte(rgb, image.Width);
+
+            rgb = Transformations.SobelEdgeDetector(rgb, image.Width);
+
+            if (image.Width % 2 != 0)
+                rgb = Transformations.AddShiftByte(rgb, image.Width);
+
+            image = RGBtoBitmap(rgb, image);
+            UpdatePictureFrame();
+        }
     }
 }

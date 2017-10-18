@@ -35,6 +35,7 @@
             this.openButton = new System.Windows.Forms.Button();
             this.rstButton = new System.Windows.Forms.Button();
             this.gbkSlider = new System.Windows.Forms.NumericUpDown();
+            this.seButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gbtSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gbkSlider)).BeginInit();
@@ -42,10 +43,9 @@
             // 
             // bwButton
             // 
-            this.bwButton.Location = new System.Drawing.Point(16, 15);
-            this.bwButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bwButton.Location = new System.Drawing.Point(12, 12);
             this.bwButton.Name = "bwButton";
-            this.bwButton.Size = new System.Drawing.Size(129, 28);
+            this.bwButton.Size = new System.Drawing.Size(97, 23);
             this.bwButton.TabIndex = 0;
             this.bwButton.Text = "Black + White";
             this.bwButton.UseVisualStyleBackColor = true;
@@ -53,10 +53,9 @@
             // 
             // gbButton
             // 
-            this.gbButton.Location = new System.Drawing.Point(16, 50);
-            this.gbButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbButton.Location = new System.Drawing.Point(12, 41);
             this.gbButton.Name = "gbButton";
-            this.gbButton.Size = new System.Drawing.Size(129, 28);
+            this.gbButton.Size = new System.Drawing.Size(97, 23);
             this.gbButton.TabIndex = 1;
             this.gbButton.Text = "Gaussian Blur";
             this.gbButton.UseVisualStyleBackColor = true;
@@ -65,8 +64,7 @@
             // gbtSlider
             // 
             this.gbtSlider.DecimalPlaces = 2;
-            this.gbtSlider.Location = new System.Drawing.Point(153, 54);
-            this.gbtSlider.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbtSlider.Location = new System.Drawing.Point(115, 44);
             this.gbtSlider.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -78,7 +76,7 @@
             0,
             131072});
             this.gbtSlider.Name = "gbtSlider";
-            this.gbtSlider.Size = new System.Drawing.Size(57, 22);
+            this.gbtSlider.Size = new System.Drawing.Size(43, 20);
             this.gbtSlider.TabIndex = 2;
             this.gbtSlider.Value = new decimal(new int[] {
             1,
@@ -91,20 +89,18 @@
             this.imageFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageFrame.Location = new System.Drawing.Point(237, 15);
-            this.imageFrame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.imageFrame.Location = new System.Drawing.Point(178, 12);
             this.imageFrame.Name = "imageFrame";
-            this.imageFrame.Size = new System.Drawing.Size(533, 366);
+            this.imageFrame.Size = new System.Drawing.Size(400, 297);
             this.imageFrame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageFrame.TabIndex = 3;
             this.imageFrame.TabStop = false;
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(16, 352);
-            this.openButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.openButton.Location = new System.Drawing.Point(12, 286);
             this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(100, 28);
+            this.openButton.Size = new System.Drawing.Size(75, 23);
             this.openButton.TabIndex = 4;
             this.openButton.Text = "Open Image";
             this.openButton.UseVisualStyleBackColor = true;
@@ -112,10 +108,9 @@
             // 
             // rstButton
             // 
-            this.rstButton.Location = new System.Drawing.Point(16, 316);
-            this.rstButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rstButton.Location = new System.Drawing.Point(12, 257);
             this.rstButton.Name = "rstButton";
-            this.rstButton.Size = new System.Drawing.Size(100, 28);
+            this.rstButton.Size = new System.Drawing.Size(75, 23);
             this.rstButton.TabIndex = 5;
             this.rstButton.Text = "Reset Image";
             this.rstButton.UseVisualStyleBackColor = true;
@@ -123,14 +118,15 @@
             // 
             // gbkSlider
             // 
-            this.gbkSlider.Location = new System.Drawing.Point(153, 84);
+            this.gbkSlider.Location = new System.Drawing.Point(115, 68);
+            this.gbkSlider.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbkSlider.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.gbkSlider.Name = "gbkSlider";
-            this.gbkSlider.Size = new System.Drawing.Size(57, 22);
+            this.gbkSlider.Size = new System.Drawing.Size(43, 20);
             this.gbkSlider.TabIndex = 6;
             this.gbkSlider.Value = new decimal(new int[] {
             3,
@@ -138,11 +134,22 @@
             0,
             0});
             // 
+            // seButton
+            // 
+            this.seButton.Location = new System.Drawing.Point(13, 70);
+            this.seButton.Name = "seButton";
+            this.seButton.Size = new System.Drawing.Size(97, 23);
+            this.seButton.TabIndex = 7;
+            this.seButton.Text = "Sobel Edge";
+            this.seButton.UseVisualStyleBackColor = true;
+            this.seButton.Click += new System.EventHandler(this.seButton_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 395);
+            this.ClientSize = new System.Drawing.Size(590, 321);
+            this.Controls.Add(this.seButton);
             this.Controls.Add(this.gbkSlider);
             this.Controls.Add(this.rstButton);
             this.Controls.Add(this.openButton);
@@ -150,7 +157,6 @@
             this.Controls.Add(this.gbtSlider);
             this.Controls.Add(this.gbButton);
             this.Controls.Add(this.bwButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Image Transformer";
             ((System.ComponentModel.ISupportInitialize)(this.gbtSlider)).EndInit();
@@ -169,6 +175,7 @@
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.Button rstButton;
         private System.Windows.Forms.NumericUpDown gbkSlider;
+        private System.Windows.Forms.Button seButton;
     }
 }
 

@@ -116,7 +116,47 @@ namespace ImageTransformer
                             bSum += k.array[u, v] * rgb[p];
                             gSum += k.array[u, v] * rgb[p + 1];
                             rSum += k.array[u, v] * rgb[p + 2];
-                            kSum += k.array[u, v];
+                            kSum += Math.Abs(k.array[u, v]);
+                        }
+                    }
+                }
+                //MessageBox.Show("Sum: " + sum);                
+                byte bResult = (byte)(bSum / (kSum));
+                byte gResult = (byte)(gSum / (kSum));
+                byte rResult = (byte)(rSum / (kSum));
+
+                frgb[x] = bResult;
+                frgb[x + 1] = gResult;
+                frgb[x + 2] = rResult;
+            }
+            return frgb;
+        }
+
+        public static double[] ApplyFilterD(byte[] rgb, Kernel k, int width)
+        {
+            int pixelWidth = 3;
+            int height = rgb.Length / width / pixelWidth;
+            double[] frgb = new double[rgb.Length];
+
+            for (int x = 0; x < rgb.Length; x = x + pixelWidth)
+            {
+                double bSum = 0.0f;
+                double gSum = 0.0f;
+                double rSum = 0.0f;
+
+                double kSum = 0.0f;
+                for (int u = 0; u < k.width; u++)
+                {
+                    for (int v = 0; v < k.height; v++)
+                    {
+                        int p = GetPixelRelative(width, rgb.Length, pixelWidth, v - k.height / 2, u - k.width / 2, x);
+                        //MessageBox.Show("" + x);
+                        if (-1 < p)
+                        {
+                            bSum += k.array[u, v] * rgb[p];
+                            gSum += k.array[u, v] * rgb[p + 1];
+                            rSum += k.array[u, v] * rgb[p + 2];
+                            kSum += Math.Abs(k.array[u, v]);
                         }
                     }
                 }
@@ -156,11 +196,25 @@ namespace ImageTransformer
             return bw;
         }
 
-        public static byte[] GaussianBlur(byte[] rgb, int width, int kernalSize,double tao)
+        public static byte[] GaussianBlur(byte[] rgb, int width, int kernalSize, double tao)
         {
             Kernel kernal = new Kernel();
             kernal.GenerateArray(GetGuassianTerms(kernalSize * kernalSize, kernalSize, tao), kernalSize);
             return ApplyFilter(rgb, kernal, width);
+        }
+
+        public static byte[] SobelEdgeDetector(byte[] rgb, int width)
+        {
+            rgb = RGBtoBW(rgb, width);
+            double[] rgby = ApplyFilterD(rgb, new Kernel(new double[] { 1, 2, 1, 0, 0, 0, -1, -2, -1 }, 3), width);
+            double[] rgbx = ApplyFilterD(rgb, new Kernel(new double[] { -1, 0, 1, -2, 0, 2, -1, 0, 2 }, 3), width);
+            for(int i = 0; i < rgb.Length; i++)
+            {
+                //rgb[i] = (byte)(rgby[i]);
+                //rgb[i] =(byte) (Math.Sqrt(Math.Pow(rgby[i],2) + Math.Pow(rgbx[i],2)));
+            }
+
+            return rgb;
         }
 
         public static double[] GetGuassianTerms(int kernalSize, int width, double tao)
@@ -234,5 +288,12 @@ namespace ImageTransformer
                 }
             } Testing the array*/ 
         }
+
+        public Kernel(double[] kernal, int width_)
+        {
+            GenerateArray(kernal, width_);
+        }
+
+        public Kernel(){}
     }
 }
